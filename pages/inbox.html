@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbox — PulseMail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="inbox">
+  <div class="app-layout">
+    <div id="sidebarRoot"></div>
+    <div id="headerRoot"></div>
+    <main class="app-content page-fade-in">
+      <div class="email-container">
+        <!-- Focus Mode Banner -->
+        <div class="focus-banner" id="focusBanner">
+          <div class="focus-banner__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="focus-banner__text">
+            <div class="focus-banner__title">Focus Mode Active</div>
+            <div class="focus-banner__desc" id="focusBannerDesc">Showing only important emails</div>
+          </div>
+          <button class="focus-banner__close" onclick="FocusModeService.disable(); location.reload();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Duplicate Detection Banner -->
+        <div class="duplicate-banner" id="dupBanner">
+          <div class="duplicate-banner__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <div class="duplicate-banner__content">
+            <div class="duplicate-banner__title" id="dupTitle">Duplicate emails detected</div>
+            <div class="duplicate-banner__desc" id="dupDesc"></div>
+            <div class="duplicate-banner__actions">
+              <button class="duplicate-banner__btn duplicate-banner__btn--review" onclick="InboxPage.showDuplicateModal()">Review Duplicates</button>
+              <button class="duplicate-banner__btn duplicate-banner__btn--dismiss" onclick="InboxPage.dismissDuplicates()">Dismiss</button>
+            </div>
+          </div>
+          <button class="duplicate-banner__close" onclick="document.getElementById('dupBanner').classList.remove('visible')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="email-toolbar">
+          <div class="email-toolbar__left">
+            <div class="email-toolbar__tabs" id="categoryTabs">
+              <button class="email-toolbar__tab active" data-cat="all">All</button>
+              <button class="email-toolbar__tab" data-cat="primary">Primary</button>
+              <button class="email-toolbar__tab" data-cat="social">Social</button>
+              <button class="email-toolbar__tab" data-cat="promotions">Promotions</button>
+              <button class="email-toolbar__tab" data-cat="updates">Updates</button>
+            </div>
+          </div>
+          <div class="email-toolbar__right">
+            <button class="email-toolbar__btn" title="Refresh" onclick="InboxPage.load()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="email-list" id="emailList">
+          <div class="skeleton-list">
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Duplicate Review Modal -->
+    <div class="duplicate-modal-overlay" id="dupModal">
+      <div class="duplicate-modal">
+        <div class="duplicate-modal__header">
+          <h3 class="duplicate-modal__title">Duplicate Emails</h3>
+          <button class="mail-view__toolbar-btn" onclick="document.getElementById('dupModal').classList.remove('active')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="duplicate-modal__body" id="dupModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/gmail-api.js"></script>
+  <script src="../assets/js/mail-service.js"></script>
+  <script src="../assets/js/services/reminder-service.js"></script>
+  <script src="../assets/js/services/focus-mode-service.js"></script>
+  <script src="../assets/js/services/duplicate-service.js"></script>
+  <script src="../assets/js/components/sidebar.js"></script>
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/email-list.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages/inbox.js"></script>
+</body>
+</html>

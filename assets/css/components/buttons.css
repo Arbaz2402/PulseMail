@@ -1,0 +1,52 @@
+/* =============================================
+   Component — Buttons
+   ============================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  gap: var(--space-2);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem; font-weight: 600;
+  transition: all var(--t-base);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, #6366F1, #818CF8);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.5);
+}
+
+.btn--secondary {
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.btn--secondary:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn--ghost:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.btn--sm { padding: 6px 14px; font-size: 0.78rem; }
+.btn--lg { padding: 14px 32px; font-size: 0.95rem; }
+
+.btn svg { width: 18px; height: 18px; }

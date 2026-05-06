@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compose — PulseMail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="compose">
+  <div class="app-layout">
+    <div id="sidebarRoot"></div>
+    <div id="headerRoot"></div>
+    <main class="app-content page-fade-in">
+      <div class="compose-container">
+        <div class="compose-card">
+          <div class="compose-header">
+            <h2>New Message</h2>
+          </div>
+          <div class="compose-field">
+            <label class="compose-field__label">To</label>
+            <input type="email" class="compose-field__input" id="composeTo" placeholder="recipient@example.com" />
+          </div>
+          <div class="compose-field">
+            <label class="compose-field__label">Subject</label>
+            <input type="text" class="compose-field__input" id="composeSubject" placeholder="Subject" />
+          </div>
+          <div class="compose-body">
+            <textarea class="compose-body__editor" id="composeBody" placeholder="Write your message..."></textarea>
+          </div>
+          <div class="compose-toolbar">
+            <div class="compose-toolbar__left">
+              <button class="compose-toolbar__btn" title="Attach">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              </button>
+              <button class="compose-toolbar__btn" title="Emoji">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </button>
+            </div>
+            <button class="compose-send-btn" id="sendBtn" onclick="ComposePage.send()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/gmail-api.js"></script>
+  <script src="../assets/js/mail-service.js"></script>
+  <script src="../assets/js/services/reminder-service.js"></script>
+  <script src="../assets/js/services/focus-mode-service.js"></script>
+  <script src="../assets/js/components/sidebar.js"></script>
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/email-list.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages/compose.js"></script>
+</body>
+</html>

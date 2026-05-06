@@ -1,0 +1,77 @@
+/* =============================================
+   Page — App Layout
+   ============================================= */
+
+.app-layout {
+  min-height: 100vh;
+  background: var(--bg-body);
+}
+
+#sidebarRoot:empty {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  z-index: var(--z-sidebar);
+}
+
+#headerRoot:empty {
+  position: fixed;
+  top: 0; left: var(--sidebar-width); right: 0;
+  height: var(--header-height);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: var(--z-header);
+}
+
+[data-theme="dark"] #headerRoot:empty {
+  background: rgba(21,27,43,0.85);
+  border-color: var(--border);
+}
+
+.app-content {
+  margin-left: var(--sidebar-width);
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  transition: margin var(--t-base);
+}
+
+.page-fade-in {
+  animation: page-in 0.4s var(--ease) both;
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+.page-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6);
+  padding-bottom: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title-bar h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.page-title-bar__count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .app-content { margin-left: 0; }
+  #sidebarRoot:empty { display: none; }
+  #headerRoot:empty { left: 0; }
+}

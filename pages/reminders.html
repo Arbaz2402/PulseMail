@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reminders — PulseMail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="reminders">
+  <div class="app-layout">
+    <div id="sidebarRoot"></div>
+    <div id="headerRoot"></div>
+    <main class="app-content page-fade-in">
+      <div class="email-container">
+        <div class="page-title-bar">
+          <h1>Follow-up Reminders</h1>
+          <div>
+            <button class="btn btn--sm btn--secondary" id="clearAllBtn">Clear Completed</button>
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="reminder-stats" id="reminderStats"></div>
+
+        <div class="reminder-card">
+          <div class="reminder-card__header">
+            <div class="reminder-card__title">Awaiting Reply</div>
+          </div>
+          <div id="reminderList"></div>
+        </div>
+
+        <div class="reminder-card">
+          <div class="reminder-card__header">
+            <div class="reminder-card__title">Completed</div>
+          </div>
+          <div id="completedList"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/gmail-api.js"></script>
+  <script src="../assets/js/mail-service.js"></script>
+  <script src="../assets/js/services/reminder-service.js"></script>
+  <script src="../assets/js/services/focus-mode-service.js"></script>
+  <script src="../assets/js/components/sidebar.js"></script>
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/email-list.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages/reminders.js"></script>
+</body>
+</html>

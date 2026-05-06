@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drafts — PulseMail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="drafts">
+  <div class="app-layout">
+    <div id="sidebarRoot"></div>
+    <div id="headerRoot"></div>
+    <main class="app-content page-fade-in">
+      <div class="email-container">
+        <div class="page-title-bar"><h1>Drafts</h1></div>
+        <div style="height:16px"></div>
+        <div class="email-list" id="emailList" style="border-radius: var(--radius-lg)">
+          <div class="skeleton-list">
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+            <div class="skeleton-item"><div class="skeleton-circle"></div><div class="skeleton-circle skeleton-circle--sm"></div><div class="skeleton-content"><div class="skeleton-line skeleton-line--short"></div><div class="skeleton-line skeleton-line--long"></div></div><div class="skeleton-line skeleton-line--date"></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/gmail-api.js"></script>
+  <script src="../assets/js/mail-service.js"></script>
+  <script src="../assets/js/services/reminder-service.js"></script>
+  <script src="../assets/js/services/focus-mode-service.js"></script>
+  <script src="../assets/js/components/sidebar.js"></script>
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/email-list.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages/drafts.js"></script>
+</body>
+</html>

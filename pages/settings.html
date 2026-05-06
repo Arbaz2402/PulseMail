@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — PulseMail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body data-page="settings">
+  <div class="app-layout">
+    <div id="sidebarRoot"></div>
+    <div id="headerRoot"></div>
+    <main class="app-content page-fade-in">
+      <div class="settings-container">
+        <div class="page-title-bar" style="padding: 0 0 24px"><h1>Settings</h1></div>
+
+        <!-- Account -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__title">Account</div>
+            <div class="settings-card__desc">Manage your account and connection</div>
+          </div>
+          <div class="settings-connection" id="connectionStatus"></div>
+          <div class="settings-item">
+            <div class="settings-item__info">
+              <div class="settings-item__label">Sign Out</div>
+              <div class="settings-item__desc">Sign out of your PulseMail account</div>
+            </div>
+            <button class="settings-btn settings-btn--danger" onclick="SettingsPage.signOut()">Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Appearance -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__title">Appearance</div>
+            <div class="settings-card__desc">Customize how PulseMail looks</div>
+          </div>
+          <div class="settings-item">
+            <div class="settings-item__info">
+              <div class="settings-item__label">Theme</div>
+              <div class="settings-item__desc">Choose light or dark mode</div>
+            </div>
+            <select class="settings-select" id="themeSelect" onchange="SettingsPage.changeTheme(this.value)">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Gmail API -->
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <div class="settings-card__title">Gmail API Configuration</div>
+            <div class="settings-card__desc">Connect your real Gmail account</div>
+          </div>
+          <div class="settings-item">
+            <div class="settings-item__info">
+              <div class="settings-item__label">Google Client ID</div>
+              <div class="settings-item__desc" id="clientIdStatus">Not configured</div>
+            </div>
+            <button class="settings-btn settings-btn--primary" onclick="SettingsPage.configureGmail()">Configure</button>
+          </div>
+          <div class="settings-item" id="clearDataSection">
+            <div class="settings-item__info">
+              <div class="settings-item__label">Clear Local Data</div>
+              <div class="settings-item__desc">Remove all locally stored demo emails</div>
+            </div>
+            <button class="settings-btn settings-btn--danger" onclick="SettingsPage.clearData()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/gmail-api.js"></script>
+  <script src="../assets/js/mail-service.js"></script>
+  <script src="../assets/js/services/reminder-service.js"></script>
+  <script src="../assets/js/services/focus-mode-service.js"></script>
+  <script src="../assets/js/components/sidebar.js"></script>
+  <script src="../assets/js/components/header.js"></script>
+  <script src="../assets/js/components/email-list.js"></script>
+  <script src="../assets/js/components/toast.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* =============================================
+   Component — Focus Mode Toggle & Indicator
+   ============================================= */
+
+.focus-toggle {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--t-base);
+  position: relative;
+}
+
+.focus-toggle:hover {
+  background: var(--primary-soft);
+}
+
+.focus-toggle__switch {
+  width: 36px; height: 20px;
+  background: var(--border);
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: background var(--t-base);
+  flex-shrink: 0;
+}
+
+.focus-toggle__switch::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--t-base);
+}
+
+.focus-toggle.active .focus-toggle__switch {
+  background: var(--primary);
+}
+
+.focus-toggle.active .focus-toggle__switch::after {
+  transform: translateX(16px);
+}
+
+.focus-toggle__label {
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--t-fast);
+  white-space: nowrap;
+}
+
+.focus-toggle.active .focus-toggle__label {
+  color: var(--primary);
+}
+
+/* Focus Mode Banner */
+.focus-banner {
+  display: none;
+  align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-4);
+  animation: focus-slide-in 0.3s var(--ease-spring) both;
+}
+
+.focus-banner.visible { display: flex; }
+
+@keyframes focus-slide-in {
+  from { opacity: 0; transform: translateY(-10px); }
+}
+
+.focus-banner__icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.focus-banner__icon svg { width: 18px; height: 18px; color: #fff; }
+
+.focus-banner__text {
+  flex: 1;
+}
+
+.focus-banner__title {
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--primary);
+}
+
+.focus-banner__desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.focus-banner__close {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: all var(--t-fast);
+}
+
+.focus-banner__close:hover {
+  background: rgba(99,102,241,0.1);
+  color: var(--primary);
+}
+
+.focus-banner__close svg { width: 16px; height: 16px; }
