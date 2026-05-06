@@ -55,8 +55,6 @@ const Auth = {
   },
 
   googleLogin() {
-    const clientId = DB.getClientId();
-    
     if (!this._tokenClient) {
       this._initGoogleAuth();
       setTimeout(() => {
@@ -96,18 +94,6 @@ const Auth = {
       this.showError('Failed to fetch profile: ' + err.message);
       GmailAPI.clearToken();
     }
-  },
-
-  saveClientId() {
-    const input = document.getElementById('clientIdInput');
-    const id = input.value.trim();
-    if (!id) return;
-
-    DB.setClientId(id);
-    document.getElementById('configModal').classList.remove('active');
-    this._initGoogleAuth();
-
-    setTimeout(() => this.googleLogin(), 500);
   },
 
   demoLogin() {

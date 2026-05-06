@@ -92,35 +92,7 @@
       </div>
     </div>
 
-    <!-- Config Modal -->
-    <div class="config-modal-overlay" id="configModal">
-      <div class="config-modal">
-        <h3>Setup Google API</h3>
-        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-bottom: 16px;">
-          To access your real Gmail, you need a Google Cloud Client ID:
-        </p>
-        <ol>
-          <li>Go to <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a></li>
-          <li>Create a new project (or select existing)</li>
-          <li>Enable <strong>Gmail API</strong> in APIs &amp; Services</li>
-          <li>Go to <strong>OAuth consent screen</strong>:
-            <ul style="font-size: 0.75rem; margin-top: 4px; color: #ffcc00;">
-              <li>Set User Type to <strong>External</strong></li>
-              <li>Under <strong>Test users</strong>, click <strong>+ ADD USERS</strong> and add your email (kaladiya.arbaz@gmail.com)</li>
-            </ul>
-          </li>
-          <li>Go to Credentials → Create OAuth 2.0 Client ID</li>
-          <li>Set Application type: <strong>Web application</strong></li>
-          <li>Add <strong>http://localhost:8765</strong> to Authorized JavaScript origins</li>
-          <li>Copy your Client ID and paste below</li>
-        </ol>
-        <input type="text" class="config-modal__input" id="clientIdInput" placeholder="your-client-id.apps.googleusercontent.com" />
-        <div class="config-modal__actions">
-          <button class="config-modal__btn config-modal__btn--secondary" onclick="document.getElementById('configModal').classList.remove('active')">Cancel</button>
-          <button class="config-modal__btn config-modal__btn--primary" onclick="Auth.saveClientId()">Save & Connect</button>
-        </div>
-      </div>
-    </div>
+    <!-- Config Modal removed as Client ID is now hardcoded -->
   </div>
 
   <script src="assets/js/storage.js"></script>
