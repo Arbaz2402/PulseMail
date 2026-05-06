@@ -89,7 +89,7 @@ const DB = {
   /* ── Client ID ────────────────────────── */
 
   getClientId() {
-    return this.get('google_client_id', null);
+    return this.get('google_client_id', '462383795718-okj5s0nsprj7o9nvdvkko3l4c5phcnm5.apps.googleusercontent.com');
   },
 
   setClientId(id) {

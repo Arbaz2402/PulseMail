@@ -56,11 +56,7 @@ const Auth = {
 
   googleLogin() {
     const clientId = DB.getClientId();
-    if (!clientId) {
-      document.getElementById('configModal').classList.add('active');
-      return;
-    }
-
+    
     if (!this._tokenClient) {
       this._initGoogleAuth();
       setTimeout(() => {
